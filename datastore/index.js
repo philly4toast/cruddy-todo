@@ -13,6 +13,32 @@ exports.create = (text, callback) => {
   callback(null, { id, text });
 };
 
+// writeCounter inside the callback function, and create a new file path
+// pass in new file path & text that we are given
+
+// exports.create = (text, callback) => {
+//   var id = counter.getNextUniqueId();
+//   var newPath =
+//   writeCounter()
+// }
+
+// exports.create = (text, callback) => {
+
+//   counter.getNextUniqueId(
+//     (err, id) => {
+//       var filepath = path.join(exports.dataDir, id + ".txt"); // `${id}.txt`
+//       fs.writeFile(filepath, text, (err) => {
+//         if (err) {
+//           callback(err);
+//         } else {
+//           callback(null, {id, text});
+//           // console.log('Has successfully written data');
+//         }
+//       });
+//     }
+//   );
+// };
+
 exports.readAll = (callback) => {
   var data = _.map(items, (text, id) => {
     return { id, text };

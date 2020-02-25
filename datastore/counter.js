@@ -37,14 +37,33 @@ const writeCounter = (count, callback) => {
 };
 
 // Public API - Fix this function //////////////////////////////////////////////
+//ORIGINAL Just incase
+// exports.getNextUniqueId = () => {
+//   counter = counter + 1;
+//   return zeroPaddedNumber(counter);
+// };
 
-exports.getNextUniqueId = () => {
-  counter = counter + 1;
+exports.getNextUniqueId = (callback) => {
+  readCounter(function(error, currentCount) {
+    writeCounter(currentCount+1, function(error, someID) {
+      callback(error, someID);
+    });
+  });
   return zeroPaddedNumber(counter);
 };
-
 
 
 // Configuration -- DO NOT MODIFY //////////////////////////////////////////////
 
 exports.counterFile = path.join(__dirname, 'counter.txt');
+
+
+// exports.getNextUniqueId = (callback) => {
+//   readCounter(function(error, theCounter) {
+//     writeCounter(theCounter, function(err, someID) {
+//       callback(err, someID);
+
+//     });
+//   });
+//   return zeroPaddedNumber(counter);
+// };
